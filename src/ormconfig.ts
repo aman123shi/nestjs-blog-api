@@ -6,9 +6,9 @@ export const DBconfig: DataSourceOptions = {
   port: 3306,
   password: '1199',
   database: 'blog',
-  synchronize: true,
+  synchronize: false,
   logging: true,
-  entities: [],
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
   subscribers: [],
-  migrations: [],
+  migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
 };
