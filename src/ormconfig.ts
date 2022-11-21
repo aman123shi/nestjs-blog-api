@@ -1,4 +1,5 @@
-import { DataSourceOptions } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
+
 export const DBconfig: DataSourceOptions = {
   type: 'mysql',
   host: 'localhost',
@@ -6,9 +7,13 @@ export const DBconfig: DataSourceOptions = {
   port: 3306,
   password: '1199',
   database: 'blog',
-  synchronize: false,
+  synchronize: true,
   logging: true,
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
   subscribers: [],
   migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
+};
+export const dataSource = new DataSource(DBconfig);
+async () => {
+  await dataSource.initialize();
 };
